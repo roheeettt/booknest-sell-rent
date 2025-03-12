@@ -28,7 +28,7 @@ export type BookCondition = Book["condition"];
 
 export interface BookFilter {
   category?: string;
-  genre?: string;
+  genre?: string; // Changed from string to match the filterBooks function's expected type
   ageGroup?: string;
   condition?: BookCondition;
   minPrice?: number;

@@ -1,5 +1,5 @@
 
-import { Book } from "./types";
+import { Book, BookFilter } from "./types";
 
 export const books: Book[] = [
   {
@@ -352,7 +352,7 @@ export const conditions = [
 ];
 
 // Helper function to filter books
-export const filterBooks = (books: Book[], filters: Partial<Book> & { search?: string }) => {
+export const filterBooks = (books: Book[], filters: BookFilter) => {
   return books.filter(book => {
     // Filter by category
     if (filters.category && book.category !== filters.category) {
@@ -383,12 +383,12 @@ export const filterBooks = (books: Book[], filters: Partial<Book> & { search?: s
     }
     
     // Filter by sale availability
-    if (typeof filters.isForSale === 'boolean' && book.isForSale !== filters.isForSale) {
+    if (typeof filters.forSale === 'boolean' && book.isForSale !== filters.forSale) {
       return false;
     }
     
     // Filter by rental availability
-    if (typeof filters.isForRent === 'boolean' && book.isForRent !== filters.isForRent) {
+    if (typeof filters.forRent === 'boolean' && book.isForRent !== filters.forRent) {
       return false;
     }
     
