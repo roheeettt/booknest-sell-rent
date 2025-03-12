@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -52,6 +53,15 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				book: {
+					DEFAULT: '#8B4513',  // SaddleBrown
+					light: '#D2B48C',    // Tan
+					dark: '#654321',     // Dark Brown
+					accent1: '#800020',  // Burgundy
+					accent2: '#2E8B57',  // Forest Green
+					paper: '#F5F5DC',    // Beige
+					aged: '#E8DCC5'      // Aged Paper
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -89,6 +99,9 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out'
+			},
+			backgroundImage: {
+				'paper-texture': "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZjVmNWRjIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDAgTDQgNCBNNCAwIEwwIDQiIHN0cm9rZT0iI2UwZGJjMyIgc3Ryb2tlLXdpZHRoPSIwLjUiPjwvcGF0aD4KPC9zdmc+')"
 			}
 		}
 	},
