@@ -1,6 +1,6 @@
 
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Search, BookIcon, BookOpen, Star, BookMarked } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,12 +10,13 @@ import FeaturedBooks from "@/components/FeaturedBooks";
 import { books } from "@/lib/data";
 
 const Home = () => {
-  const [searchQuery, setSearchQuery] = React.useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
   
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      window.location.href = `/books?search=${encodeURIComponent(searchQuery.trim())}`;
+      navigate(`/books?search=${encodeURIComponent(searchQuery.trim())}`);
     }
   };
   
@@ -53,7 +54,7 @@ const Home = () => {
                 <Input
                   type="search"
                   placeholder="Search by title, author, or keyword..."
-                  className="pl-9 h-12 border-0 rounded-l-lg focus-visible:ring-offset-0"
+                  className="pl-9 h-12 border-0 rounded-l-lg focus-visible:ring-offset-0 text-black"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />

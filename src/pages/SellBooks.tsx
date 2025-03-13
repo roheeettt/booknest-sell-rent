@@ -4,9 +4,15 @@ import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Check, DollarSign, Truck } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SellBooks = () => {
+  const navigate = useNavigate();
+  
+  const handleCreateListing = () => {
+    navigate("/books/create-listing");
+  };
+  
   return (
     <Layout>
       <div className="container py-8">
@@ -85,7 +91,11 @@ const SellBooks = () => {
             Join thousands of sellers who have successfully found new homes for their pre-loved books. Create your first listing today and start earning!
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Button size="lg" className="bg-book-accent1 hover:bg-book-accent1/90">
+            <Button 
+              size="lg" 
+              className="bg-book-accent1 hover:bg-book-accent1/90"
+              onClick={handleCreateListing}
+            >
               Create a Listing
             </Button>
             <Button asChild size="lg" variant="outline" className="text-white border-white hover:bg-white/10">

@@ -1,12 +1,11 @@
 
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { Search, ShoppingCart, BookOpen, Menu, X, User } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { Search, ShoppingCart, BookOpen, Menu, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -16,6 +15,7 @@ const Header = () => {
     e.preventDefault();
     if (searchQuery.trim()) {
       navigate(`/books?search=${encodeURIComponent(searchQuery.trim())}`);
+      setSearchQuery(""); // Clear search after submitting
     }
   };
 
@@ -77,7 +77,7 @@ const Header = () => {
                 placeholder="Search books..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-8 bg-white/60"
+                className="w-full pl-8 bg-white/60 text-black"
               />
             </div>
           </form>
