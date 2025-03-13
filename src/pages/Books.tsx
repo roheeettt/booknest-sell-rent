@@ -32,6 +32,9 @@ const Books = () => {
   const [searchInputValue, setSearchInputValue] = useState(initialFilters.search || "");
   const [filteredBooks, setFilteredBooks] = useState(books);
   
+  console.log("Current filters:", filters);
+  console.log("Filtered books count:", filteredBooks.length);
+  
   // Update URL when filters change
   useEffect(() => {
     const params = new URLSearchParams();
@@ -50,6 +53,7 @@ const Books = () => {
   }, [filters, location.pathname]);
   
   const handleFilterChange = (newFilters: BookFilter) => {
+    console.log("Filter changed:", newFilters);
     setFilters(newFilters);
   };
   
@@ -83,7 +87,7 @@ const Books = () => {
               placeholder="Search books..."
               value={searchInputValue}
               onChange={(e) => setSearchInputValue(e.target.value)}
-              className="rounded-r-none"
+              className="rounded-r-none text-black"
             />
             <Button type="submit" className="rounded-l-none">
               Search

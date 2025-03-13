@@ -2,7 +2,6 @@
 import React from "react";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
   Select,
@@ -24,19 +23,19 @@ interface BookFiltersProps {
 
 const BookFilters = ({ filters, onFilterChange, onReset }: BookFiltersProps) => {
   const handleCategoryChange = (value: string) => {
-    onFilterChange({ ...filters, category: value });
+    onFilterChange({ ...filters, category: value === "all" ? undefined : value });
   };
 
   const handleGenreChange = (value: string) => {
-    onFilterChange({ ...filters, genre: value });
+    onFilterChange({ ...filters, genre: value === "all" ? undefined : value });
   };
 
   const handleAgeGroupChange = (value: string) => {
-    onFilterChange({ ...filters, ageGroup: value });
+    onFilterChange({ ...filters, ageGroup: value === "all" ? undefined : value });
   };
 
   const handleConditionChange = (value: string) => {
-    onFilterChange({ ...filters, condition: value as BookFilter["condition"] });
+    onFilterChange({ ...filters, condition: value === "all" ? undefined : value as BookFilter["condition"] });
   };
 
   const handlePriceChange = (values: number[]) => {
@@ -74,12 +73,15 @@ const BookFilters = ({ filters, onFilterChange, onReset }: BookFiltersProps) => 
       <div className="space-y-4">
         <div className="space-y-2">
           <Label htmlFor="category">Category</Label>
-          <Select value={filters.category || ""} onValueChange={handleCategoryChange}>
+          <Select 
+            value={filters.category || "all"} 
+            onValueChange={handleCategoryChange}
+          >
             <SelectTrigger id="category">
               <SelectValue placeholder="All Categories" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">All Categories</SelectItem>
+              <SelectItem value="all">All Categories</SelectItem>
               {categories.map(category => (
                 <SelectItem key={category} value={category}>
                   {category}
@@ -91,12 +93,15 @@ const BookFilters = ({ filters, onFilterChange, onReset }: BookFiltersProps) => 
         
         <div className="space-y-2">
           <Label htmlFor="genre">Genre</Label>
-          <Select value={filters.genre || ""} onValueChange={handleGenreChange}>
+          <Select 
+            value={filters.genre || "all"} 
+            onValueChange={handleGenreChange}
+          >
             <SelectTrigger id="genre">
               <SelectValue placeholder="All Genres" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">All Genres</SelectItem>
+              <SelectItem value="all">All Genres</SelectItem>
               {genres.map(genre => (
                 <SelectItem key={genre} value={genre}>
                   {genre}
@@ -108,12 +113,15 @@ const BookFilters = ({ filters, onFilterChange, onReset }: BookFiltersProps) => 
         
         <div className="space-y-2">
           <Label htmlFor="ageGroup">Age Group</Label>
-          <Select value={filters.ageGroup || ""} onValueChange={handleAgeGroupChange}>
+          <Select 
+            value={filters.ageGroup || "all"} 
+            onValueChange={handleAgeGroupChange}
+          >
             <SelectTrigger id="ageGroup">
               <SelectValue placeholder="All Age Groups" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">All Age Groups</SelectItem>
+              <SelectItem value="all">All Age Groups</SelectItem>
               {ageGroups.map(ageGroup => (
                 <SelectItem key={ageGroup} value={ageGroup}>
                   {ageGroup}
@@ -125,12 +133,15 @@ const BookFilters = ({ filters, onFilterChange, onReset }: BookFiltersProps) => 
         
         <div className="space-y-2">
           <Label htmlFor="condition">Condition</Label>
-          <Select value={filters.condition || ""} onValueChange={handleConditionChange}>
+          <Select 
+            value={filters.condition || "all"} 
+            onValueChange={handleConditionChange}
+          >
             <SelectTrigger id="condition">
               <SelectValue placeholder="Any Condition" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">Any Condition</SelectItem>
+              <SelectItem value="all">Any Condition</SelectItem>
               {conditions.map(condition => (
                 <SelectItem key={condition.value} value={condition.value}>
                   {condition.label}
